@@ -14,3 +14,5 @@ Other shell scripts have their own repositories:
 - iptools
 - dirmem
 - shellmenu
+
+<img src="https://raw.githubusercontent.com/ElfQrin/geody_shell_scripts/main/geody_shell_scripts_logo.png" alt="GeodyLabs Geody Shell Scripts" />

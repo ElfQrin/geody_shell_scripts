@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # aptup
-xver='r2021-08-14 fr2021-08-14';
+xver='r2022-08-24 fr2021-08-14';
 # by Valerio Capello - http://labs.geody.com/ - License: GPL v3.0
 
 
@@ -25,7 +25,7 @@ if ( $shwspackcnt ); then
 echo; echo -n "Installed packages: "; dpkg --get-selections | wc -l;
 fi
 if ( $shwspacklast ); then
-echo; echo "Last installed packages:"; grep install /var/log/dpkg.log | tail -$shwspackmax;
+echo; echo "Last installed packages:"; grep " status installed " /var/log/dpkg.log | tail -$shwspackmax;
 fi
 if ( $checkbroken ); then
 echo; echo "Check for incorrect installations and broken dependencies:"; dpkg --audit ; apt-get check ;

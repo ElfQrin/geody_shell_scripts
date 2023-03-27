@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Simple Chart
-xver='r2022-08-23 fr2020-10-09';
+xver='r2023-03-27 fr2020-10-09';
 # by Valerio Capello - http://labs.geody.com/ - License: GPL v3.0
 
 
@@ -20,7 +20,9 @@ plotbas="|"; # Plot base character
 plotbar="="; # Plot bar character
 # plotchar=$plotbar; # Plot last character (No special last character)
 plotchar="*"; # Plot last character
+plotempty="."; # Plot empty space
 drwplotbas=true; # Draw base character
+drwplotempty=true; # Draw empty space
 drwbars=true; # Draw bars
 drwnums=true; # Print numbers
 drwnpos=true; # Print position (if drwnums=true )
@@ -29,14 +31,14 @@ drwnpct=true; # Print percent (if drwnums=true )
 
 # Functions
 
-# strrepeat() {
-# nm=$2
-# if (( $nm > 0 )); then
-# st=$1
-# r=$(printf "%-${nm}s" "$st")
-# echo -n "${r// /$st}"
-# fi
-# }
+strrepeat() {
+nm=$2
+if (( $nm > 0 )); then
+st=$1
+r=$(printf "%-${nm}s" "$st")
+echo -n "${r// /$st}"
+fi
+}
 
 strind() {
 nm=$(( $3 - 1 ))
@@ -74,10 +76,11 @@ xsz=$(( el * maxw / maxv ))
 if ( $drwplotbas ); then echo -n $plotbas; fi
 # strrepeat "$plotchar" "$xsz"
 strind "$plotbar" "$plotchar" "$xsz"
+if ( $drwplotempty ); then xem=$(( maxw - xsz )); strrepeat "$plotempty" "$xem"; fi
 fi
 if ( $drwnums ); then
 if ( $drwnpos ); then ounpos=" $i:"; else ounpos=""; fi
-if ( $drwnval ); then ounval=" $el"; else ounval=""; fi
+if ( $drwnval ); then ounval=" $el"; ounval=${ounval%% }; else ounval=""; fi
 if ( $drwnpct ); then if ( $drwnval ); then ounpct=" (${xpc}%)"; else ounpct=" ${xpc}%"; fi; else ounpct=""; fi
 echo "${ounpos}${ounval}${ounpct}"; # echo " $i: $el (${xpc}%)";
 else

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # aptup
-xver='r2022-12-18 fr2021-08-14';
+xver='r2023-09-07 fr2021-08-14';
 # by Valerio Capello - http://labs.geody.com/ - License: GPL v3.0
 
 
@@ -46,12 +46,14 @@ cat /etc/apt/sources.list ; # | grep 'deb \|deb-src ' ;
 fi
 echo; echo "Dowloading package information:";
 apt update ;
-upacks="$( apt-get -s upgrade | tail --lines=1 ; )";
-if [[ "${upacks:0:2}" != "0 " ]]; then
+upacks="$( aptitude search '~U' | wc -l | tr -d '\n' ; )";
+if [ $upacks -gt 0 ]; then
 echo; echo "Updated packages:";
 apt list --upgradable ;
 echo; echo "Simulated Upgrade:";
 apt -s upgrade ;
 else
-echo $upacks ;
+# echo "$( apt-get -s upgrade | tail --lines=1 ; )";
+# echo "0 packages updated.";
+false;
 fi

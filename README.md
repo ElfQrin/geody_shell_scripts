@@ -11,6 +11,7 @@ A bunch of useful shell scripts.
 - Hello World: a script that says Hello World!
 - Log This: a script that appends a line of text to a log file with current date and time and other information specified in the configuration.
 - Simple Charts: a script that plots a bar graph from integer numbers passed as arguments or from an array set in the configuration.
+- SService: a script to start / stop / restart / get status for multiple services.
 - Swap Files (you may alias it as swap ): a script that swaps two files or directories. It moves temporarily the first file into the /tmp/ directory.
 - Terminal Lock (TermLock, you can alias it as lock ): a script to lock your terminal. It traps signals and interrupts to block Ctrl+C , Ctrl+\ , Ctrl+Z , Ctrl+D, uses a hashed password and can log failed attempts.
 

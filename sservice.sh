@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # sservice
-xver='r2023-09-11 f2023-09-07';
+xver='r2023-09-30 f2023-09-07';
 # by Valerio Capello - http://labs.geody.com/ - License: GPL v3.0
 
 
@@ -17,7 +17,7 @@ dotservice=""; # SystemD .service: use dotservice=".service" to force .service a
 stopterm=true; # Term Service after Stopping it, shouldn't it stop.
 stoptermtime=90; # Time in seconds to Term a program if it hasn't stopped.
 stoptermkill=true; # Term Service after Stopping it, shouldn't it stop.
-stoptermkilltime=30; # Time in seconds (after stoptermtime) to Kill a program if it hasn't stopped nor terminated (requires stopterm=true).
+stoptermkilltime=30; # Time in seconds (after stoptermtime) to Kill a program if it hasn't stopped nor terminated (if stopterm=true ).
 stopkillanyway=false; # Kill any still existing process with the service name.
 
 
@@ -196,7 +196,7 @@ apphelp;
 exit 0;
 ;;
 '--ver'|'--version')
-echo "Version: $xver";
+echo "Version: $xver"; # It's printed in the header anyway
 exit 0;
 ;;
 '--list')
